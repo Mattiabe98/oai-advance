@@ -3,7 +3,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .name }}-{{ .Chart.Name }}  # Access Chart.Name directly
+  name: {{ .Release.Name }}-{{ .Chart.Name }}
+  # Access Chart.Name directly
   labels:
     {{- include "oai-nr-ue.labels" . | nindent 4 }}
 spec:
