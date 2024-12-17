@@ -79,7 +79,7 @@ spec:
       volumes:
       {{- range .Values.ue }}
       - configMap:
-          name: {{ .Release.Name }}-configmap-{{ .name }}  # Create separate ConfigMap for each UE
+          name: {{ .name }}-configmap  # Create separate ConfigMap for each UE
         name: configuration-{{ .name }}
       {{- end }}
       - name: dev-net-tun
