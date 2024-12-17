@@ -3,20 +3,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .name }}-{{ $.Chart.Name }}  # Corrected reference to Chart.Name
+  name: {{ .name }}-{{ .Chart.Name }}  # Access Chart.Name directly
   labels:
-    {{- include "oai-nr-ue.labels" (merge . $.Chart) | nindent 4 }}  # Pass Chart context explicitly
+    {{- include "oai-nr-ue.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "oai-nr-ue.selectorLabels" (merge . $.Chart) | nindent 6 }}  # Pass Chart context explicitly
+      {{- include "oai-nr-ue.selectorLabels" . | nindent 6 }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        {{- include "oai-nr-ue.selectorLabels" (merge . $.Chart) | nindent 8 }}  # Pass Chart context explicitly
+        {{- include "oai-nr-ue.selectorLabels" . | nindent 8 }}
         app: oai-nr-ue
     spec:
       securityContext:
@@ -112,7 +112,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - /usr/bin/tcpdump -i any -w /tmp/pcap/{{ $.Chart.Name }}_`date +%Y-%m-%d_%H_%M-%S-%Z`.pcap
+          - /usr/bin/tcpdump -i any -w /tmp/pcap/{{ .Chart.Name }}_`date +%Y-%m-%d_%H_%M-%S-%Z`.pcap
         {{- else}}
         command:
           - /bin/sleep
@@ -159,7 +159,7 @@ spec:
       {{- end }}
       volumes:
       - configMap:
-          name: {{ $.Chart.Name }}-configmap
+          name: {{ .Chart.Name }}-configmap
         name: configuration
       - name: dev-net-tun
         hostPath:
