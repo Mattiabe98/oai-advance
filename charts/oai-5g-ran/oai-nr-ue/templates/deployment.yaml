@@ -3,20 +3,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .name }}-{{ $.Chart.Name }}  # Corrected the reference to Chart.Name
+  name: {{ .name }}-{{ $.Chart.Name }}  # Corrected reference to Chart.Name
   labels:
-    {{- include "oai-nr-ue.labels" . | nindent 4 }}
+    {{- include "oai-nr-ue.labels" (merge . $.Chart) | nindent 4 }}  # Pass Chart context explicitly
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "oai-nr-ue.selectorLabels" . | nindent 6 }}
+      {{- include "oai-nr-ue.selectorLabels" (merge . $.Chart) | nindent 6 }}  # Pass Chart context explicitly
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        {{- include "oai-nr-ue.selectorLabels" . | nindent 8 }}
+        {{- include "oai-nr-ue.selectorLabels" (merge . $.Chart) | nindent 8 }}  # Pass Chart context explicitly
         app: oai-nr-ue
     spec:
       securityContext:
