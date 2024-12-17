@@ -5,7 +5,7 @@ kind: ConfigMap
 metadata:
   name: {{ .name }}-configmap
 data:
-  nr-ue.conf:
+  nr-ue.conf: |
     uicc0 = {
       imsi = "{{ .imsi }}";           # Use the specific imsi for each UE
       key = "{{ .Values.config.key }}";             # Use the specific key for each UE
@@ -14,3 +14,4 @@ data:
       nssai_sst = "{{ .Values.config.sst }}";  # Use the shared sst from config
       nssai_sd = "{{ .Values.config.sd }}";    # Use the shared sd from config
     }
+{{- end }}
