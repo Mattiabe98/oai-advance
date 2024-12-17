@@ -1,7 +1,9 @@
+{{- range .Values.ue }}
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: {{ .name }}-{{ .Chart.Name }}
   labels:
     {{- include "oai-nr-ue.labels" . | nindent 4 }}
 spec:
@@ -43,7 +45,6 @@ spec:
             name: configuration
           - name: dev-net-tun
             mountPath: /dev/net/tun
-          # USRP B210/B200 Mini
         {{- if eq .Values.config.usrp "b2xx"}}
           - mountPath: /dev/bus/usb/
             name: usrp
@@ -85,6 +86,8 @@ spec:
             value: {{ .Values.config.rfSimServer }}
           - name: USE_ADDITIONAL_OPTIONS
             value: {{ .Values.config.useAdditionalOptions }}
+          - name: UE_IMSI
+            value: "{{ .imsi }}"  # Accessing the imsi for each UE
       {{- if .Values.includeTcpDumpContainer }}
       - name: tcpdump
         image: "{{ .Values.tcpdumpimage.repository }}:{{ .Values.tcpdumpimage.version }}"
@@ -172,3 +175,4 @@ spec:
       {{- if .Values.nodeName}}
       nodeName: {{ .Values.nodeName }}
       {{- end }}
+{{- end }}
