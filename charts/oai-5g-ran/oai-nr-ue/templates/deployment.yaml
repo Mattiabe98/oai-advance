@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .name }}-{{ .Chart.Name }}
+  name: {{ .name }}-{{ $.Chart.Name }}  # Corrected the reference to Chart.Name
   labels:
     {{- include "oai-nr-ue.labels" . | nindent 4 }}
 spec:
@@ -112,7 +112,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - /usr/bin/tcpdump -i any -w /tmp/pcap/{{ .Chart.Name }}_`date +%Y-%m-%d_%H_%M-%S-%Z`.pcap
+          - /usr/bin/tcpdump -i any -w /tmp/pcap/{{ $.Chart.Name }}_`date +%Y-%m-%d_%H_%M-%S-%Z`.pcap
         {{- else}}
         command:
           - /bin/sleep
@@ -159,7 +159,7 @@ spec:
       {{- end }}
       volumes:
       - configMap:
-          name: {{ .Chart.Name }}-configmap
+          name: {{ $.Chart.Name }}-configmap
         name: configuration
       - name: dev-net-tun
         hostPath:
