@@ -94,4 +94,5 @@ spec:
          {{- toYaml .Values.nodeSelector | nindent 12 }}
       {{- end }}
       {{- if .Values.nodeName}}
-      nodeNa
+      nodeName: {{ .Values.nodeName }}
+      {{- end }}
