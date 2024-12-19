@@ -1,17 +1,17 @@
+{{- range .Values.ue }}
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Chart.Name }}-configmap
+  name: {{ $.Chart.Name }}-configmap-{{ .name }}
 data:
   nr-ue.conf: |
-    uicc0 = {
-      {{- range .Values.ue }}
-      imsi = "{{ .imsi }}";           # Use the specific imsi for each UE
-      {{- end }}
-      key = "{{ .Values.config.key }}";             # Use the specific key for each UE
-      opc = "{{ .Values.config.opc }}";  # Use the shared opc from config
-      dnn = "{{ .Values.config.dnn }}";  # Use the shared dnn from config
-      nssai_sst = "{{ .Values.config.sst }}";  # Use the shared sst from config
-      nssai_sd = "{{ .Values.config.sd }}";    # Use the shared sd from config
-    }
+      uicc0 = {
+      imsi = "{{ .imsi }}";
+      key = "{{ $.Values.config.fullKey }}";
+      opc = "{{ $.Values.config.opc }}";
+      dnn = "{{ $.Values.config.dnn }}";
+      nssai_sst = "{{ $.Values.config.sst }}";
+      nssai_sd = "{{ $.Values.config.sd }}";
+      }
+{{- end }}
