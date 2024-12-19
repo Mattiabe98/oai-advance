@@ -36,40 +36,40 @@ spec:
       containers:
       {{- range .Values.ue }}
       - name: {{ .name }}
-        image: "{{ .Values.nfimage.repository }}:{{ .Values.nfimage.version }}"
+        image: "{{ $.Values.nfimage.repository }}:{{ $.Values.nfimage.version }}"
         securityContext:
-          {{- toYaml .Values.securityContext | nindent 12 }}
+          {{- toYaml $.Values.securityContext | nindent 12 }}
         volumeMounts:
           - mountPath: /opt/oai-nr-ue/etc
             name: configuration-{{ .name }}
           - name: dev-net-tun
             mountPath: /dev/net/tun
           # USRP B210/B200 Mini
-        {{- if eq .Values.config.usrp "b2xx"}}
+        {{- if eq $.Values.config.usrp "b2xx"}}
           - mountPath: /dev/bus/usb/
             name: usrp
         {{- end}}
-        {{- if .Values.resources.define}}
+        {{- if $.Values.resources.define}}
         resources:
           requests:
-            memory: {{ .Values.resources.requests.nf.memory | quote }}
-            cpu: {{ .Values.resources.requests.nf.cpu | quote }}
+            memory: {{ $.Values.resources.requests.nf.memory | quote }}
+            cpu: {{ $.Values.resources.requests.nf.cpu | quote }}
           limits:
-            memory: {{ .Values.resources.limits.nf.memory | quote }}
-            cpu: {{ .Values.resources.limits.nf.cpu | quote }}
+            memory: {{ $.Values.resources.limits.nf.memory | quote }}
+            cpu: {{ $.Values.resources.limits.nf.cpu | quote }}
         {{- end}}
-        {{- if .Values.start.nrue}}
+        {{- if $.Values.start.nrue}}
         command: [ "/bin/bash", "-c" ]
         args:
           - RFSIM_IP_ADDRESS=$(getent hosts $RFSIM_HOST | awk '{print $1}');
-            {{- if eq .Values.config.usrp "b2xx"}}
+            {{- if eq $.Values.config.usrp "b2xx"}}
               /opt/oai-gnb/bin/uhd_images_downloader.py -t b2xx;
-            {{- else if eq .Values.config.usrp "n3xx" }}
+            {{- else if eq $.Values.config.usrp "n3xx" }}
               /opt/oai-gnb/bin/uhd_images_downloader.py -t n3xx;
-            {{- else if eq .Values.config.usrp "x3xx" }}
+            {{- else if eq $.Values.config.usrp "x3xx" }}
               /opt/oai-gnb/bin/uhd_images_downloader.py -t x3xx;
             {{- end }}
-            {{- if eq .Values.config.usrp "rfsim" }}
+            {{- if eq $.Values.config.usrp "rfsim" }}
               exec /opt/oai-nr-ue/bin/nr-uesoftmodem -O /opt/oai-nr-ue/etc/nr-ue.conf $USE_ADDITIONAL_OPTIONS --rfsimulator.serveraddr $RFSIM_IP_ADDRESS;
             {{- else}}
               exec  /opt/oai-nr-ue/bin/nr-uesoftmodem -O /opt/oai-nr-ue/etc/nr-ue.conf $USE_ADDITIONAL_OPTIONS;
@@ -81,11 +81,11 @@ spec:
         {{- end}}
         env:
           - name: TZ
-            value: {{ .Values.config.timeZone }}
+            value: {{ $.Values.config.timeZone }}
           - name: RFSIM_HOST
-            value: {{ .Values.config.rfSimServer }}
+            value: {{ $.Values.config.rfSimServer }}
           - name: USE_ADDITIONAL_OPTIONS
-            value: {{ .Values.config.useAdditionalOptions }}
+            value: {{ $.Values.config.useAdditionalOptions }}
       {{- end }}
       {{- if .Values.includeTcpDumpContainer }}
       - name: tcpdump
