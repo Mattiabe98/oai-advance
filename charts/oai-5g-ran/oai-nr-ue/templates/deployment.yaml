@@ -34,13 +34,14 @@ spec:
             - until ping -c 1  {{ .Values.config.rfSimServer }}; do echo waiting for oai-du to start; sleep 1; done
     {{- end }}{{ end }}
       containers:
-      - name: nr-ue
+      {{- range .Values.ue }}
+      - name: {{ .name }}
         image: "{{ .Values.nfimage.repository }}:{{ .Values.nfimage.version }}"
         securityContext:
           {{- toYaml .Values.securityContext | nindent 12 }}
         volumeMounts:
           - mountPath: /opt/oai-nr-ue/etc
-            name: configuration
+            name: configuration-{{ .name }}
           - name: dev-net-tun
             mountPath: /dev/net/tun
           # USRP B210/B200 Mini
@@ -85,6 +86,7 @@ spec:
             value: {{ .Values.config.rfSimServer }}
           - name: USE_ADDITIONAL_OPTIONS
             value: {{ .Values.config.useAdditionalOptions }}
+      {{- end }}
       {{- if .Values.includeTcpDumpContainer }}
       - name: tcpdump
         image: "{{ .Values.tcpdumpimage.repository }}:{{ .Values.tcpdumpimage.version }}"
@@ -155,9 +157,11 @@ spec:
             value: {{ .Values.config.rfSimServer }}
       {{- end }}
       volumes:
+      {{- range .Values.ue }}
       - configMap:
-          name: {{ .Chart.Name }}-configmap
-        name: configuration
+          name: {{ $.Chart.Name }}-configmap-{{ .name }}
+        name: configuration-{{ .name }}
+      {{- end }}
       - name: dev-net-tun
         hostPath:
           path: /dev/net/tun
