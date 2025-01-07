@@ -84,7 +84,7 @@ tcpdumpimage:
   
 trafficimage:
   repository: docker.io/oaisoftwarealliance/oai-nr-ue           # dockehub oaisoftwarealliance/oai-nr-ue
-  version: 2024.w32 # image tag or develop 
+  version: 2024.w50 # image tag or develop 
   # pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
 
