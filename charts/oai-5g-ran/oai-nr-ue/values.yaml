@@ -21,28 +21,6 @@ serviceAccount:
 imagePullSecrets: 
  - name: "regcred"
 
-ue:
-  - name: "ue0"
-    imsi: "001010000000100"
-  - name: "ue1"
-    imsi: "001010000000101"
-  - name: "ue2"
-    imsi: "001010000000102"
-  - name: "ue3"
-    imsi: "001010000000103"
-  - name: "ue4"
-    imsi: "001010000000104"
-  - name: "ue5"
-    imsi: "001010000000105"
-  - name: "ue6"
-    imsi: "001010000000106"
-  - name: "ue7"
-    imsi: "001010000000107"
-  - name: "ue8"
-    imsi: "001010000000108"
-  - name: "ue9"
-    imsi: "001010000000109"
-
 config:
   timeZone: "Europe/Paris"
   rfSimServer: "oai-ran"    # ip-address of rfsim or service name oai-gnb or oai-du
