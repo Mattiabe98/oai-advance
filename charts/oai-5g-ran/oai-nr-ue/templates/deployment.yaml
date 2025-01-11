@@ -31,7 +31,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - until ping -c 1  {{ .Values.config.rfSimServer }}; do echo waiting for oai-du to start; sleep 10; done
+            - until ping -c 1  {{ .Values.config.rfSimServer }}; do echo waiting for oai-du to start; sleep 1; done; sleep 10
     {{- end }}{{ end }}
       containers:
       - name: nr-ue
