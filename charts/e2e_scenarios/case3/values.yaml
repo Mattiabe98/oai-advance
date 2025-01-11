@@ -448,8 +448,8 @@ oai-nr-ue:
     define: true
     limits:
       nf:
-        cpu: 2000m
-        memory: 4Gi
+        cpu: 4000m
+        memory: 8Gi
     requests:
       nf:
         cpu: 2000m
