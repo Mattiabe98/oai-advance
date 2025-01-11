@@ -53,9 +53,9 @@ spec:
           requests:
             memory: {{ .Values.resources.requests.nf.memory | quote }}
             cpu: {{ .Values.resources.requests.nf.cpu | quote }}
-          #limits:
-            #memory: {{ .Values.resources.limits.nf.memory | quote }}
-            #cpu: {{ .Values.resources.limits.nf.cpu | quote }}
+          limits:
+            memory: {{ .Values.resources.limits.nf.memory | quote }}
+            cpu: {{ .Values.resources.limits.nf.cpu | quote }}
         {{- end}}
         {{- if .Values.start.nrue}}
         command: [ "/bin/bash", "-c" ]
