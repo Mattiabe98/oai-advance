@@ -64,7 +64,8 @@ spec:
           command:
             - /bin/sh
             - -c
-            - until ncat -zv {{ .Values.config.amfhost }} 38412 --sctp ; do echo waiting for oai-amf to start; sleep 1; done
+            - sleep 120;
+#            - until ncat -zv {{ .Values.config.amfhost }} 38412 --sctp ; do echo waiting for oai-amf to start; sleep 1; done
           resources:
             requests:
               memory: 50Mi
