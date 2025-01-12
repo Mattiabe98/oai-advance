@@ -232,7 +232,7 @@ data:
 
       log_config: {
         global_log_level = "info";
-        hw_log_level = "debug";
+        hw_log_level = "info";
         phy_log_level = "info";
         mac_log_level = "debug";
         rlc_log_level = "debug";
