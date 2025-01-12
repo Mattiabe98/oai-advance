@@ -231,11 +231,11 @@ data:
       }
 
       log_config: {
-        global_log_level = "debug";
-        hw_log_level = "info";
+        global_log_level = "info";
+        hw_log_level = "debug";
         phy_log_level = "info";
-        mac_log_level = "info";
-        rlc_log_level = "info";
-        f1ap_log_level = "info";
+        mac_log_level = "debug";
+        rlc_log_level = "debug";
+        f1ap_log_level = "debug";
       };
 
