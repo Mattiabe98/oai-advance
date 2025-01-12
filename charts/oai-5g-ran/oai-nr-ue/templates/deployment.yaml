@@ -163,7 +163,7 @@ spec:
           path: /dev/net/tun
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      serviceAccountName: {{ .Values.serviceAccount.name }}
+      serviceAccountName: {{ .Chart.Name }}
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       {{- if .Values.nodeSelector}}
       nodeSelector: 
