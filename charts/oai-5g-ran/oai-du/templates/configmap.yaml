@@ -29,7 +29,7 @@ data:
           ////////// Physical parameters:
 
           min_rxtxtime                                              = 6;
-          force_256qam_off = 1;
+          #force_256qam_off = 1;
 
           servingCellConfigCommon = (
           {
@@ -182,8 +182,9 @@ data:
           local_n_portd   = {{ .Values.config.f1duPort}};
           remote_n_portc  = 501;
           remote_n_portd  = {{ .Values.config.f1cuPort}};
-          pusch_TargetSNRx10          = 200;
-          pucch_TargetSNRx10          = 200;
+          #pusch_TargetSNRx10          = 200;
+          #pucch_TargetSNRx10          = 200;
+          pusch_FailureThres  = 1000;
         }
       );
 
