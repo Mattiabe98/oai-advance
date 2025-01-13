@@ -8,8 +8,6 @@ data:
       Active_gNBs = ( "{{ .Values.config.cucpName}}");
       # Asn1_verbosity, choice in: none, info, annoying
       Asn1_verbosity = "none";
-      Num_Threads_PUSCH = 8;
-      sa = 1;
 
       gNBs =
       (
