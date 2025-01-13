@@ -7,7 +7,6 @@ data:
       Active_gNBs = ( "{{ .Values.config.cuupName}}");
       # Asn1_verbosity, choice in: none, info, annoying
       Asn1_verbosity = "none";
-      sa = 1;
 
       gNBs =
       (
