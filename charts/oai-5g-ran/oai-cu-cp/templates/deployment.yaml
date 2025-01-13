@@ -116,6 +116,7 @@ spec:
                 -e s/@F1_IP_ADDRESS@/$F1_IP_ADDRESS/g
                 -e s/@CUCP_IP_ADDRESS@/$CUCP_IP_ADDRESS/g
                 -e s/@AMF_IP_ADDRESS@/$AMF_IP_ADDRESS/g
+                -e s/@CU_UP_IP_ADDRESS@/$CU_UP_IP_ADDRESS/g
                 /opt/oai-gnb/etc/cucp.conf | tee /tmp/cucp.conf;
             /opt/oai-gnb/bin/nr-softmodem -O /tmp/cucp.conf $USE_ADDITIONAL_OPTIONS;
         {{- else}}
