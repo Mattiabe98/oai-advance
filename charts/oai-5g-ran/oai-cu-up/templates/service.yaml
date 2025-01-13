@@ -8,15 +8,15 @@ spec:
   type: ClusterIP
   clusterIP: None
   ports:
-    - name: n2
-      port: 36412
-      targetPort: 36412
+    - name: n3
+      port: 2152
+      targetPort: 2152
       protocol: SCTP
     - name: e1
       port: 38462
       targetPort: 38462
       protocol: SCTP
-    - name: f1
+    - name: f1u
       port: {{ .Values.config.f1cuPort}}
       targetPort: {{ .Values.config.f1cuPort}}
       protocol: UDP
