@@ -31,7 +31,7 @@ config:
   sst: "1"                     # configure according to gnb and amf, smf and upf 
   sd: "16777215"
   usrp: "rfsim"            # allowed rfsim, b2xx, n3xx, x3xx
-  useAdditionalOptions: "--rfsim -E -r 106 --numerology 1 -C 3619200000 --log_config.global_log_options level,nocolor,time"
+  useAdditionalOptions: "--rfsim -r 106 --numerology 1 -C 3619200000 --log_config.global_log_options level,nocolor,time"
 
 podSecurityContext:
   runAsUser: 0
@@ -49,7 +49,7 @@ securityContext:
 start:
   nrue: true
   tcpdump: false  # if false then started in sleep mode else it will start capturing packets, nr ue will have a lot of packets per sec better avoid this or add a filter in the deployment.yaml
-  traffic: false
+  traffic: true
 
 includeTcpDumpContainer: false #If true it will add a tcpdump container inside network function pod for debugging
 includeTrafficContainer: true # start container used for traffic generation
