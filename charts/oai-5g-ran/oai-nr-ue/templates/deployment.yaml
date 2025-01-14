@@ -142,7 +142,11 @@ spec:
           - until ping -c 1 google.com -I oaitun_ue1; do echo Waiting for connectivity to core; sleep 1; done;
             TUN_IP_ADDRESS=$(ip -4 addr show oaitun_ue1 | awk '/inet / {print $2}' | cut -d/ -f1);
             echo $TUN_IP_ADDRESS;
-            exec /usr/bin/iperf3 -c oai-traffic-server --time 0 -B $TUN_IP_ADDRESS;
+            POD_SUFFIX=$(hostname | sed -E 's/^[^-]+-[^-]+-[^-]+-([0-9]+)-.*/\1/')
+            if ! [[ "$POD_SUFFIX" =~ ^[0-9]+$ ]]; then POD_SUFFIX=0; fi;
+            PORT=$((5201 + POD_SUFFIX));
+            echo "Connecting to port $PORT";
+            exec /usr/bin/iperf3 -c oai-traffic-server --time 0 -B $TUN_IP_ADDRESS -p $PORT;            
         {{- else}}
         command:
           - /bin/sleep
