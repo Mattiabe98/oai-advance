@@ -198,7 +198,7 @@ data:
         prach_dtx_threshold = 200;
         pucch0_dtx_threshold = 150;
         ofdm_offset_divisor = 8; #set this to UINT_MAX for offset 0
-        max_ldpc_iterations = 4;
+        max_ldpc_iterations = 6;
       }
       );
 
