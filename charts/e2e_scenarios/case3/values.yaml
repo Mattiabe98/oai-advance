@@ -212,7 +212,7 @@ oai-traffic-server:
     ueroute: 12.1.1.0/24
     upfHost: oai-upf
     routeInterface: eth0
-    noOfIperf3Server: 2
+    noOfIperf3Server: 5
   resources:
     define: false
     limits:
