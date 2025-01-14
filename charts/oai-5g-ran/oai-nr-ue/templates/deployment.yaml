@@ -143,7 +143,9 @@ spec:
             TUN_IP_ADDRESS=$(ip -4 addr show oaitun_ue1 | awk '/inet / {print $2}' | cut -d/ -f1);
             echo $TUN_IP_ADDRESS;
             POD_SUFFIX=$(hostname | sed -E 's/^[^-]+-[^-]+-[^-]+-([0-9]+)-.*/\1/')
-            if [ -z "$POD_SUFFIX" ] || ! echo "$POD_SUFFIX" | grep -qE '^[0-9]+$'; then POD_SUFFIX=0; fi;
+                        if [ -z "$POD_SUFFIX" ] || ! echo "$POD_SUFFIX" | grep -qE '^[0-9]+$'; then
+              POD_SUFFIX=0
+            fi;
             PORT=$((5201 + POD_SUFFIX));
             echo "Connecting to port $PORT";
             exec /usr/bin/iperf3 -c oai-traffic-server --time 0 -B $TUN_IP_ADDRESS -p $PORT;            
