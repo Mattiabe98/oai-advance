@@ -154,7 +154,7 @@ data:
             nrofDownlinkSlots                                             = 7;
             nrofDownlinkSymbols                                           = 8; #6
             nrofUplinkSlots                                               = 2;
-            nrofUplinkSymbols                                             = 6; #4
+            nrofUplinkSymbols                                             = 5; #4
 
             ssPBCH_BlockPower                                             = -25;
            }
