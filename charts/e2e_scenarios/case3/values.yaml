@@ -409,7 +409,7 @@ oai-du:
       hostInterface: "bond0"      # Interface of the host machine on which this pod will be scheduled
   config:
     timeZone: "Europe/Paris"
-    useAdditionalOptions: "--sa --rfsim --log_config.global_log_options level,wall_clock --telnetsrv --log_config.phy_log_level debug"
+    useAdditionalOptions: "--sa --rfsim --log_config.global_log_options level,wall_clock --telnetsrv --log_config.phy_log_level info"
     duName: "oai-du-rfsim"
     usrp: rfsim   #allowed values rfsim, b2xx, n3xx or x3xx
     f1IfName: "eth0"   #if multus.f1Interface.create is true then use f1
