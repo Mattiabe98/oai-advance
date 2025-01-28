@@ -4,7 +4,7 @@ kubernetesDistribution: Openshift  #Vanilla for community kubernetes distributio
 ## To know more about them follow this tutorial https://gitlab.eurecom.fr/oai/cn5g/oai-cn5g-fed/-/tree/master/openshift
 nfimage:
   repository: docker.io/oaisoftwarealliance/oai-nr-ue           # dockehub oaisoftwarealliance/oai-nr-ue
-  version: 2024.w32 # image tag or develop 
+  version: develop # image tag or develop 
   # pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
 
@@ -31,7 +31,7 @@ config:
   sst: "1"                     # configure according to gnb and amf, smf and upf 
   sd: "16777215"
   usrp: "rfsim"            # allowed rfsim, b2xx, n3xx, x3xx
-  useAdditionalOptions: "--rfsim -r 106 --numerology 1 -C 3619200000 --log_config.global_log_options level,nocolor,time"
+  useAdditionalOptions: "--rfsim -r 106 --numerology 1 -C 3619200000 --log_config.global_log_options level,wall_clock --telnetsrv --log_config.global_log_level info"
 
 podSecurityContext:
   runAsUser: 0
@@ -62,7 +62,7 @@ tcpdumpimage:
   
 trafficimage:
   repository: docker.io/oaisoftwarealliance/oai-nr-ue           # dockehub oaisoftwarealliance/oai-nr-ue
-  version: 2024.w50 # image tag or develop 
+  version: develop # image tag or develop 
   # pullPolicy: IfNotPresent or Never or Always
   pullPolicy: IfNotPresent
 
