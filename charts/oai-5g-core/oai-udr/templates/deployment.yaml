@@ -29,6 +29,7 @@ spec:
             - /bin/sh
             - -c
             - until curl --connect-timeout {{ .Values.global.timeout }} --head -X GET http://oai-nrf/nnrf-nfm/v1/nf-instances?nf-type='NRF' {{ .Values.global.http2Param }}; do echo waiting for oai-nrf; sleep 1; done
+            - until ncat -zv mysql 3306 ; do echo waiting for mysql to start; sleep 1; done
           resources:
             requests:
               memory: 50Mi
