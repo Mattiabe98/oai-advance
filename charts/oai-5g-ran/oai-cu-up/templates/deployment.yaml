@@ -103,6 +103,8 @@ spec:
         args:
          -  CU_CP_IP_ADDRESS=$(getent hosts $CU_CP_HOST | awk '{print $1}');
             CU_CP_IP_ADDRESS=$(if [[ $CU_CP_IP_ADDRESS ]]; then echo $CU_CP_IP_ADDRESS; else echo $CU_CP_HOST;fi)
+            E2_IP_ADDRESS=$(getent hosts $E2_HOST | awk '{print $1}')
+            E2_IP_ADDRESS=$(if [[ $E2_IP_ADDRESS ]]; then echo $E2_IP_ADDRESS; else echo $E2_HOST;fi)            
             CU_UP_IP_ADDRESS=$(ip -f inet addr show $E1_IF_NAME | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*");
             N3_IP_ADDRESS=$(ip -f inet addr show $N3_IF_NAME | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*");
             F1_IP_ADDRESS=$(ip -f inet addr show $F1_IF_NAME | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*");
@@ -110,6 +112,7 @@ spec:
                 -e s/@N3_IP_ADDRESS@/$N3_IP_ADDRESS/g
                 -e s/@F1_IP_ADDRESS@/$F1_IP_ADDRESS/g
                 -e s/@E1_IP_ADDRESS@/$E1_IP_ADDRESS/g
+                -e s/@E2_IP_ADDRESS@/$E2_IP_ADDRESS/g
                 -e s/@CU_CP_IP_ADDRESS@/$CU_CP_IP_ADDRESS/g
                 -e s/@CU_UP_IP_ADDRESS@/$CU_UP_IP_ADDRESS/g
                 /opt/oai-gnb/etc/cuup.conf | tee /tmp/cuup.conf;
@@ -132,6 +135,8 @@ spec:
             value: {{ .Values.config.f1IfName }}
           - name: E1_IF_NAME
             value: {{ .Values.config.e1IfName }}
+          - name: E2_HOST
+            value: {{ .Values.config.e2Host }}
       {{- if .Values.includeTcpDumpContainer }}
       - name: tcpdump
         image: "{{ .Values.tcpdumpimage.repository }}:{{ .Values.tcpdumpimage.version }}"
