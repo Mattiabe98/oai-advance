@@ -69,3 +69,9 @@ data:
         f1ap_log_level   = "info";
         ngap_log_level   = "info";
       };
+
+      e2_agent = {
+        near_ric_ip_addr = "@E2_IP_ADDRESS@";
+        sm_dir = "/usr/local/lib/flexric/"
+      }
+
