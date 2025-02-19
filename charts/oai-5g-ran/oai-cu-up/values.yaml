@@ -69,6 +69,7 @@ config:
   tac: "1"     # check the information with AMF
   sst: "1"     #currently only 4 standard values are allowed 1,2,3,4
   cuCpHost: "oai-cu" # 
+  e2Host: "oai-br-flexric"
   n3IfName: "eth0"   #if multus.n3Interface.create is true then use n3 or you can only use 1 interface n3 or eth0 
   f1IfName: "eth0"   #if multus.f1uInterface.create is true then use f1 or you can only use 1 interface n3 or eth0 
   e1IfName: "eth0"   #if multus.e1Interface.create is true then use e1 or you can only use 1 interface n3 or eth0 
