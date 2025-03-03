@@ -98,9 +98,9 @@ data:
              ngap_log_level                         ="debug";
           };
           
-      e2_agent = {
-        near_ric_ip_addr = "@E2_IP_ADDRESS@";
-        sm_dir = "/usr/local/lib/flexric/"
-      }
+      #e2_agent = {
+        #near_ric_ip_addr = "@E2_IP_ADDRESS@";
+        #sm_dir = "/usr/local/lib/flexric/"
+      #}
     
 
