@@ -13,7 +13,7 @@ data:
       (
        {
           ////////// Identification parameters:
-          gNB_ID = 0xe02;
+          gNB_ID = 0xe01;
           gNB_CU_ID = 0xe01;
 
       #     cell_type =  "CELL_MACRO_GNB";
@@ -28,7 +28,7 @@ data:
           plmn_list = ({ mcc = {{ .Values.config.mcc}}; mnc = {{ .Values.config.mnc}}; mnc_length = 2; snssaiList = ({ sst = {{ .Values.config.sst}} }) });
           {{- end}}
 
-          nr_cellid = 12345678L;
+          nr_cellid = 1;
 
           tr_s_preference = "f1";
 
