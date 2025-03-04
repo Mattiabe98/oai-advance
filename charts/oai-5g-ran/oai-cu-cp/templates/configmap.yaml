@@ -84,7 +84,7 @@ data:
         # setting 'drb_ciphering' to "no" disables ciphering for DRBs, no matter
         # what 'ciphering_algorithms' configures; same thing for 'drb_integrity'
         drb_ciphering = "yes";
-        drb_integrity = "no";
+        drb_integrity = "yes";
       };
        log_config :
        {
