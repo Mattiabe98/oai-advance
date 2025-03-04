@@ -86,7 +86,7 @@ securityContext:
   privileged: false
   
 start:
-  oaicucp: false
+  oaicucp: true
   tcpdump: false
 
 includeTcpDumpContainer: false #If true it will add a tcpdump container inside network function pod for debugging
