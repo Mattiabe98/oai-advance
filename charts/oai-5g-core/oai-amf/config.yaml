@@ -11,7 +11,7 @@
 
 # Log level
 log_level:
-  general: debug
+  general: info
 
 # If you enable registration, the NF will use the NRF discovery mechanism
 register_nf:
