@@ -441,8 +441,8 @@ oai-nr-ue:
     fullKey: "fec86ba6eb707ed08905757b1bb44b8f"
     opc: "C42449363BBAD02B66D16BC975D77CC1"
     dnn: "oai"
-    sst: "1"                     # configure according to gnb and amf, smf and upf
-    sd: "16777215"
+    sst: "2"                     # configure according to gnb and amf, smf and upf
+    sd: "1"
     usrp: "rfsim"            # allowed rfsim, b2xx, n3xx, x3xx
     useAdditionalOptions: "--rfsim -r 106 --numerology 1 -C 3619200000 --log_config.global_log_options level,wall_clock --telnetsrv --log_config.global_log_level info"
   resources:
