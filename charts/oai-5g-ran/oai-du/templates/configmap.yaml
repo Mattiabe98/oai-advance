@@ -25,7 +25,7 @@ data:
           plmn_list = ({ mcc = {{ .Values.config.mcc}}; mnc = {{ .Values.config.mnc}}; mnc_length = 2; snssaiList = ({ sst = {{ .Values.config.sst}} }) });
 
           nr_cellid = 1;
-
+          min_rxtxtime = 6;
           ////////// Physical parameters:
 
           pdsch_AntennaPorts_XP                                     = 2;
