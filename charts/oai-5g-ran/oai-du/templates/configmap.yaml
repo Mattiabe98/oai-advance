@@ -25,7 +25,7 @@ data:
           plmn_list = ({ mcc = {{ .Values.config.mcc}}; mnc = {{ .Values.config.mnc}}; mnc_length = 2; snssaiList = ({ sst = {{ .Values.config.sst}} }) });
 
           nr_cellid = 1;
-          do_CSIRS = 0;
+          do_CSIRS = 1;
           do_SRS = 1;
 
           ////////// Physical parameters:
