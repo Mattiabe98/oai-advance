@@ -67,8 +67,7 @@ config:
   mcc: "001"   # check the information with AMF, SMF, UPF
   mnc: "01"    # check the information with AMF, SMF, UPF
   tac: "1"     # check the information with AMF
-  sst: "2"  #currently only 4 standard values are allowed 1,2,3,4
-  sd: "000002"
+  sst: "1"  #currently only 4 standard values are allowed 1,2,3,4
   cuUpHost: "oai-cuup" # 
   amfhost: "oai-amf"  # amf ip-address or service-name oai-amf-svc or 172.21.6.94
   e2Host: "oai-br-flexric"
