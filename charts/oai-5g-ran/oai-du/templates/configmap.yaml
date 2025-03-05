@@ -159,6 +159,15 @@ data:
       
         );
 
+          # ------- SCTP definitions
+          SCTP :
+          {
+              # Number of streams to use in input/output
+              SCTP_INSTREAMS  = 2;
+              SCTP_OUTSTREAMS = 2;
+          };
+        }
+      );
 
       MACRLCs = (
         {
