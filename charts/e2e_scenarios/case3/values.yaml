@@ -9,7 +9,7 @@ global:
   http2Param: "--http2-prior-knowledge"  # if waitForNRF is true and http2 is used for all NF then this param is needed
   timeout: 1
 mysql:
-  enabled: true
+  enabled: false
   imagePullPolicy: IfNotPresent
   oai5gdatabase: basic
   imagePullSecrets:
